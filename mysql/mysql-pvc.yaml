@@ -1,0 +1,16 @@
+# 실제로 pod가 퍼시스턴트 볼륨에 직접 연결할수가 없기 때문에, 중재자가 있어야함
+# 그게 이 persistentVolume
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+
+metadata:
+  name: mysql-pvc
+
+spec:
+  storageClassName: my-storage # mysql-pv의 볼륨과 동일하게
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi # persistentVolume에게 어느정도의 볼륨을 써도 되는지 물어보는 곳

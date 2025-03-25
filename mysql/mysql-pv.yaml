@@ -1,0 +1,14 @@
+apiVersion: v1 # PersistentVolume일때는 항상 v1
+kind: PersistentVolume
+
+metadata:
+  name: mysql-pv
+
+spec:
+  storageClassName: my-storage
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce # hostPath를 하면 acessmodes가 이거만 가능
+  hostPath: # 쿠버네티스 공간을 볼륨으로 쓸꺼다
+    path: "/mnt/data"

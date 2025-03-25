@@ -25,4 +25,18 @@ spec:
             - containerPort: 8080
           env:
             - name: EXAMPLE_ENV
-              value: this is sample
+              valueFrom:
+                configMapKeyRef:
+                  name: go-config
+                  key: EXAMPLE_ENV
+            - name: EXAMPLE_ENV2
+              valueFrom:
+                configMapKeyRef:
+                  name: go-config
+                  key: EXAMPLE_ENV2
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: go-secret-config
+                  key: SECRET_KEY
+
